@@ -1,22 +1,21 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "magicwands",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "firstmod",
+	"description": "My first mod!",
 	"authors": [
 		"Me!"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/loleloup/my-first-mod"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/modid/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"com.magicwands.MagicWands"
 		],
 		"client": [
 			"com.example.ExampleModClient"

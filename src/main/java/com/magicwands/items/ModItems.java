@@ -1,6 +1,7 @@
 package com.magicwands.items;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.util.Identifier;
 
 import net.minecraft.registry.Registries;
@@ -28,4 +29,10 @@ public class ModItems {
 		new Item(new Item.Settings()),
 		"amethyst_powder"
 	);
+	
+	public static final Item TESTER_WAND = register(
+		new WandItem(ToolMaterials.DIAMOND, new Item.Settings()),
+		"tester_wand"
+	);
+	
 }

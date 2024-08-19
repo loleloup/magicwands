@@ -3,6 +3,9 @@ package com.magicwands.items;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.magicwands.mixin.MixinPlayerEntity;
+import com.magicwands.playermana.SpellcastCallback;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -12,6 +15,7 @@ import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.hit.BlockHitResult;
@@ -57,7 +61,11 @@ public class WandItem extends ToolItem{
 		
 	    
 
-
+		if (!this.decreasePlayerMana(user)) {
+			return TypedActionResult.fail(user.getStackInHand(hand));
+		}
+		
+		
 		BlockPos frontOfPlayer = this.getTarget(world, user).getBlockPos();
 		
 		
@@ -65,6 +73,8 @@ public class WandItem extends ToolItem{
 		LightningEntity lightningBolt = new LightningEntity(EntityType.LIGHTNING_BOLT, world);
 		lightningBolt.setPosition(frontOfPlayer.toCenterPos());
 		world.spawnEntity(lightningBolt);
+		
+		this.decreasePlayerMana(user);
 
 		// Nothing has changed to the item stack,
 		// so we just return it how it was.
@@ -81,8 +91,12 @@ public class WandItem extends ToolItem{
 		return world.raycast(new RaycastContext(origin, dest, RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.NONE, user));
 	}
 	
-	public void decreasePlayerMana() {
+	public boolean decreasePlayerMana(PlayerEntity user) {
 		//decrease the player mana by the wand's mana attribute
+		LOGGER.info("decrease mana for user:");
+		LOGGER.info(user.toString());
+		ActionResult result = SpellcastCallback.EVENT.invoker().interact(user, 9);
+		return result.isAccepted();
 	}
 
 }

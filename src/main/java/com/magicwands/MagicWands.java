@@ -8,7 +8,7 @@ import net.minecraft.item.ItemGroups;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.magicwands.items.ModItems;
+import com.magicwands.item.ModItems;
 
 
 public class MagicWands implements ModInitializer {
@@ -24,6 +24,9 @@ public class MagicWands implements ModInitializer {
 		// Proceed with mild caution.
 		
 		ModItems.initialize();
+		CustomRegistryKeys.initialize();
+		CustomRegistries.initialize();
+		WandSpells.initialize();
 		
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS)
 		.register((itemGroup) -> itemGroup.add(ModItems.AMETHYST_POWDER));

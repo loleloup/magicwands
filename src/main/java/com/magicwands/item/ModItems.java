@@ -1,6 +1,10 @@
-package com.magicwands.items;
+package com.magicwands.item;
+
+import com.magicwands.spell.ExplosionSpell;
+import com.magicwands.spell.ThunderSpell;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.util.Identifier;
 
@@ -31,8 +35,14 @@ public class ModItems {
 	);
 	
 	public static final Item TESTER_WAND = register(
-		new WandItem(ToolMaterials.DIAMOND, new Item.Settings()),
+		new WandItem(WandMaterials.BLAZE, new Item.Settings(), new ThunderSpell()),
 		"tester_wand"
+	);
+	
+
+	public static final Item FIRE_WAND = register(
+		new WandItem(WandMaterials.BLAZE, new Item.Settings(), new ExplosionSpell()),
+		"explosion_wand"
 	);
 	
 }

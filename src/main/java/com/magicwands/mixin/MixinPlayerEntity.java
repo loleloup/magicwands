@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 @Mixin(PlayerEntity.class)
 public class MixinPlayerEntity implements PlayerMana {
 	
-	private int mana = 15;
+	private int mana = 100;
 
 	
 	@Override
@@ -35,11 +35,12 @@ public class MixinPlayerEntity implements PlayerMana {
 	
 	@Inject(at = @At("TAIL"), method = "<init>*")
 	private void onConstructed(CallbackInfo ci) {
-		System.out.println("This line is printed by an example mod mixin!");
 		//for future me : This register the event twice : one for the client Player and one for the server player
 		//could cause issue in the future?  Is that OK?  IDK yet
 		//What about the use of attributes?
 		SpellcastCallback.EVENT.register((player, manaCost) -> {
+			System.out.println("player mana : ");
+			System.out.println(this.mana);
 			if (manaCost > this.mana) {
 				return ActionResult.FAIL;
 			}

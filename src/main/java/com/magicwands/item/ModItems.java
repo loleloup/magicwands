@@ -1,5 +1,6 @@
 package com.magicwands.item;
 
+import com.magicwands.spell.ArrowSpell;
 import com.magicwands.spell.ExplosionSpell;
 import com.magicwands.spell.ThunderSpell;
 
@@ -44,5 +45,9 @@ public class ModItems {
 		new WandItem(WandMaterials.BLAZE, new Item.Settings(), new ExplosionSpell()),
 		"explosion_wand"
 	);
+	public static final Item ARROW_WAND = register(
+			new WandItem(WandMaterials.BLAZE, new Item.Settings(), new ArrowSpell()),
+			"arrow_wand"
+		);
 	
 }

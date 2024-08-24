@@ -18,7 +18,7 @@
 			"com.magicwands.MagicWands"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+			"com.magicwands.ExampleModClient"
 		]
 	},
 	"mixins": [
@@ -36,5 +36,10 @@
 	},
 	"suggests": {
 		"another-mod": "*"
-	}
+	},
+	"custom": {
+			"loom:injected_interfaces": {
+				"net/minecraft/class_1657": ["com/magicwands/playermana/PlayerMana"]
+			}
+		}
 }

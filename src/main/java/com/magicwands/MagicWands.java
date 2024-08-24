@@ -16,6 +16,7 @@ public class MagicWands implements ModInitializer {
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
     public static final Logger LOGGER = LoggerFactory.getLogger("magicwands");
+    
 
 	@Override
 	public void onInitialize() {
@@ -32,5 +33,8 @@ public class MagicWands implements ModInitializer {
 		.register((itemGroup) -> itemGroup.add(ModItems.AMETHYST_POWDER));
 
 		LOGGER.info("Hello Fabric world!");
+		
+		
+		
 	}
 }

@@ -29,6 +29,11 @@ public class MixinPlayerEntity implements PlayerMana {
 	}
 	
 	@Override
+	public int getMana() {
+		return this.mana;
+	}
+	
+	@Override
 	public void setMana(int newValue) {
 		this.mana = newValue;
 	}

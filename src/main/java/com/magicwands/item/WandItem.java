@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.magicwands.mixin.MixinPlayerEntity;
+import com.magicwands.playermana.*;
 import com.magicwands.playermana.SpellcastCallback;
 import com.magicwands.spell.Spell;
 
@@ -79,18 +80,17 @@ public class WandItem extends ToolItem{
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 		// Ensure we don't spawn the lightning only on the client.
 		// This is to prevent desync.
-		if (world.isClient) {
-			return TypedActionResult.pass(user.getStackInHand(hand));
-		}
+//		if (world.isClient) {
+//			return TypedActionResult.pass(user.getStackInHand(hand));
+//		}
 		
 		LOGGER.info("yes {}", Registries.ITEM.get(BASE_ATTACK_SPEED_MODIFIER_ID));
 		
 	    
 
-		if (!this.decreasePlayerMana(user)) {
+		if (!user.isCreative() && !this.decreasePlayerMana(user)) {
 			return TypedActionResult.fail(user.getStackInHand(hand));
 		}
-		
 		
 		BlockPos target = this.getTarget(world, user).getBlockPos();
 		
